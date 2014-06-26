@@ -13,6 +13,10 @@ reactoApp.config(['$routeProvider', function($routeProvider) {
             templateUrl: 'partials/friends.html',
             controller: 'FriendsController'
         }).
+        when('/search', {
+            templateUrl: 'partials/search.html',
+            controller: 'SearchController'
+        }).
         otherwise({
             redirectTo: '/inbox'
         })

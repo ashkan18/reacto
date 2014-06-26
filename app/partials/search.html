@@ -1,0 +1,10 @@
+<input type="text" ng-model="searchQuery"/>
+<ul>
+    <li ng-repeat="application in applicationList | filter: appName | orderBy: psk">
+        <a href="#/apps/{{application.psk}}">{{application.name}}</a>
+        <div ng-repeat="category in application.categories">
+            {{category}}
+        </div>
+    </li>
+
+</ul>
