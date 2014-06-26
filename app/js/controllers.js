@@ -6,6 +6,7 @@ reactoApp.controller('InboxController', function($scope, $rootScope,  ReactoServ
 });
 
 reactoApp.controller('FriendsController', function($scope, $rootScope, ReactoServices) {
+    console.log("show friends");
     ReactoServices.getFriends($rootScope.userId).success(function(data) {
         console.log('data:' + data);
         $scope.friends = data.friends;

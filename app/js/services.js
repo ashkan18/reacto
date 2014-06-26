@@ -17,14 +17,14 @@ reactoApp.service('ReactoServices', function($http) {
     };
 
     this.getFriends = function(id) {
-        return $http.get({
+        return $http({
             url: "/users/" + id +"/friends/",
             method: 'GET'
         })
     };
 
     this.searchUsers = function(query) {
-        return $http.get({
+        return $http({
             method: 'GET',
             url: "/users/search/",
             data: {'query': query}
