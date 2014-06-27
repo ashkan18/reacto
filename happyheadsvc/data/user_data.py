@@ -35,9 +35,10 @@ class UserData(BaseData):
         """
         friends = []
         friends_result = self.db.users.find_one({'id': user_id})
-        for friend_id in friends_result['friends']:
-            friend_user_model = self.find_user_by_id(friend_id)
-            friends.append(friend_user_model)
+        if friends_result is not None:
+            for friend_id in friends_result['friends']:
+                friend_user_model = self.find_user_by_id(friend_id)
+                friends.append(friend_user_model)
         return friends
 
     def update_user(self, user_model):
