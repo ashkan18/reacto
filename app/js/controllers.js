@@ -17,7 +17,7 @@ reactoApp.controller('FriendsController', function($scope, $rootScope, ReactoSer
     });
 });
 
-reactoApp.controller('SearchController', function($scope, ReactoServices) {
+reactoApp.controller('SearchController', function($scope, $rootScope, ReactoServices) {
     $scope.search = function() {
         ReactoServices.searchUsers($scope.searchQuery).success( function(data) {
            $scope.searchResults = data.results;
