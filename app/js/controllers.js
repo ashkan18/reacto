@@ -3,6 +3,11 @@ reactoApp.controller('InboxController', function($scope, $rootScope,  ReactoServ
         $rootScope.page_title = 'Inbox (' + data.inbox.length + ')';
         $scope.messages = data.inbox;
     });
+
+    $scope.showMessage = function(messageId) {
+        // in this method we will make jsbridge call to open the message and take picture in native app
+        Platform.showMessageAndTakePhoto(messageId);
+    }
 });
 
 reactoApp.controller('FriendsController', function($scope, $rootScope, ReactoServices) {
@@ -17,5 +22,10 @@ reactoApp.controller('SearchController', function($scope, ReactoServices) {
         ReactoServices.searchUsers($scope.searchQuery).success( function(data) {
            $scope.searchResults = data.results;
         });
+    };
+
+    $scope.addFriend = function(friendUserId) {
+        ReactoServices.addFriend($rootScope.userId, friendUserId);
     }
+
 });

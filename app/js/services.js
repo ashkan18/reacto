@@ -31,4 +31,11 @@ reactoApp.service('ReactoServices', function($http) {
             params: {'query': query}
         })
     }
+
+    this.addFriend = function(userId, friendUserId) {
+        return $http({
+            method: 'POST',
+            url: '/users/' + userId + '/friend/' + friendUserId
+        });
+    }
 });

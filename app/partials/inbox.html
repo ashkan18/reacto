@@ -1,6 +1,11 @@
 <ul>
-    <li ng-repeat="message in messages">
-        <a href="#/messages/{{message.id}}">{{message.sender_id}} - {{message.text}}</a>
+    <li ng-repeat="message in messages" class="table-view-cell">
+        <img class="media-object pull-left profile-pic" data="{{message.sender_image}}">
+        <div class="media-body">
+            <div class="user">{{message.sender_id}}</div>
+            <div class="message">{{message.text}}</div>
+        </div>
+        <span class="badge" ng-click="showMessage(message.id)">React!</span>
     </li>
 
 </ul>
