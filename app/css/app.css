@@ -1,0 +1,86 @@
+
+
+.index h1 {
+    margin: 100px auto;
+    width: 60%;
+    text-align: center;
+}
+
+.user {
+    line-height: 42px;
+}
+
+.inbox .profile-pic, .message .profile-pic {
+    width: 42px;
+    height: 42px;
+  border-radius: 50%;
+
+  /* Prevent background color leak outs */
+  -webkit-background-clip: padding-box; 
+  -moz-background-clip:    padding; 
+  background-clip:         padding-box;
+}
+
+.msg {
+    margin: 0 auto;
+}
+
+.camera {
+    width: 300px;
+    height: 300px;
+    border: 1px solid #AAA;
+    margin: 20px auto;
+    background: url('../images/tmp/yaroo.png');
+    background-size: 300px 300px;
+    background-repeat: no-repeat;
+}
+
+.message .camera {
+    opacity: 0.6;
+    transition: opacity 0.5 linear;
+}
+
+.content > .table-view:first-child {
+    margin-top: 0px;
+    border-top: 0px;
+}
+
+.msg-cell {
+    padding: 15px;
+    height: 90px;
+    border-bottom: 1px solid #EEE;
+
+    transition: all 0.7s;
+   
+
+}
+
+.progress-bar {
+    width: 90%;
+    margin: 10px auto;
+
+}
+
+ .progressjs-inner {
+    background-color: #3DB3D4;
+    height: 2px;
+}
+
+ .progressjs-percent {
+    display: none;
+}
+
+.sending  {
+    font-size: 0.9em;
+    width: 80%;
+    margin: 10px auto;
+    transition: all 0.7s linear;
+    height: 0px;
+    opacity: 0;
+
+}
+
+.sending .btn-block {
+    width: 100%;
+}
+

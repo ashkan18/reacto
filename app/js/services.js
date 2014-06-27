@@ -7,6 +7,7 @@ reactoApp.service('ReactoServices', function($http) {
     };
 
     this.authenticate = function(id, name, access_token) {
+        $rootScope.id = id;
         return $http.post({
             url:"/users/authenticate/",
             method: 'POST',
@@ -27,7 +28,7 @@ reactoApp.service('ReactoServices', function($http) {
         return $http({
             method: 'GET',
             url: "/users/search/",
-            data: {'query': query}
+            params: {'query': query}
         })
     }
 });

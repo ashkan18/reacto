@@ -1,10 +1,7 @@
 <input type="text" ng-model="searchQuery" ng-keypress="search()"/>
 <ul>
-    <li ng-repeat="application in applicationList | filter: appName | orderBy: psk">
-        <a href="#/apps/{{application.psk}}">{{application.name}}</a>
-        <div ng-repeat="category in application.categories">
-            {{category}}
-        </div>
+    <li ng-repeat="user in searchResults ">
+        <a href="#/apps/user">{{user.name}}</a>
     </li>
 
 </ul>

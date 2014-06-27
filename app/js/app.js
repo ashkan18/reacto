@@ -1,6 +1,6 @@
 var reactoApp = angular.module('ReactoApp', ['ngRoute'])
     .run(function($rootScope) {
-        $rootScope.userId = 1;
+        $rootScope.userId = 2;
     });
 
 reactoApp.config(['$routeProvider', function($routeProvider) {
