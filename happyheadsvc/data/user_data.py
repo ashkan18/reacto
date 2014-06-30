@@ -34,9 +34,9 @@ class UserData(BaseData):
         :return: list of friends of this user
         """
         friends = []
-        friends_result = self.db.users.find_one({'id': user_id})
-        if friends_result is not None:
-            for friend_id in friends_result['friends']:
+        user_info = self.find_user_by_id(user_id)
+        if user_info is not None:
+            for friend_id in user_info.friends:
                 friend_user_model = self.find_user_by_id(friend_id)
                 friends.append(friend_user_model)
         return friends
