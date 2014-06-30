@@ -1,6 +1,5 @@
 reactoApp.service('AuthService', function($http) {
     this.authenticate = function(id, name, image, access_token) {
-        $rootScope.id = id;
         return $http.post({
             url:"/users/authenticate/",
             method: 'POST',
