@@ -13,11 +13,12 @@ def authenticate():
             --data '{"user_id": "111222333", "access_token":"123123", "name":"Ashkan Nasseri", "image":"image_url"}'
 
     """
-    user_id = request.form['user_id']
-    access_token = request.form['access_token']
-    name = request.form['name']
+    user_id = request.json['user_id']
+    access_token = request.json['access_token']
+    name = request.json['name']
+    image = request.json['image']
 
-    user_service.authenticate_user(user_id=user_id, access_token=access_token, name=name)
+    user_service.authenticate_user(user_id=user_id, access_token=access_token, name=name, image=image)
     return jsonify(sucess=True)
 
 
