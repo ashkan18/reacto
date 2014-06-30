@@ -10,7 +10,7 @@ def authenticate():
 
     curl sample:
         curl -X POST http://localhost:5000/users/authenticate -H "Content-Type: application/json"
-            --data '{"user_id": "111222333", "access_token":"123123", "name":"Ashkan Nasseri"}'
+            --data '{"user_id": "111222333", "access_token":"123123", "name":"Ashkan Nasseri", "image":"image_url"}'
 
     """
     user_id = request.form['user_id']
