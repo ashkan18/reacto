@@ -1,6 +1,6 @@
 reactoApp.service('AuthService', function($http) {
-    this.authenticate = function(id, name, image, access_token) {
-        return $http.post({
+    this.authenticate = function(userId, name, image, access_token) {
+        return $http({
             url:"/users/authenticate/",
             method: 'POST',
             data: {'user_id': userId,
@@ -9,39 +9,6 @@ reactoApp.service('AuthService', function($http) {
                    'image': image}
         })
     };
-
-    this.watchLoginChange = function() {
-
-        FB.Event.subscribe('auth.authResponseChange', function(response) {
-
-            if (response.status === 'connected') {
-
-                /*
-                 The user is already logged,
-                 is possible retrieve his personal info
-                 */
-                this.getUserInfo();
-
-                /*
-                 This is also the point where you should create a
-                 session for the current user.
-                 For this purpose you can use the data inside the
-                 response.authResponse object.
-                 */
-
-            }
-            else {
-
-                /*
-                 The user is not logged to the app, or into Facebook:
-                 destroy the session on the server.
-                 */
-
-            }
-
-        });
-    }
-
 
 });
 
