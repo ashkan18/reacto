@@ -70,10 +70,10 @@ reactoApp.controller('AuthController', [
                     $rootScope.user = response;
                     console.log(response);
                     userId = response.id;
-                    userName = response.name;
+                    fullname = response.name;
                     image =  'https://graph.facebook.com/' + userId + '/picture?type=normal';
 
-                    AuthService.authenticate(userId, name, image, '1231321').success( function(data){
+                    AuthService.authenticate(userId, fullname, image, '1231321').success( function(data){
                             $location.path( '#inbox');
                     });
 
