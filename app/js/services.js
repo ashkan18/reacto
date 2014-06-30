@@ -41,24 +41,23 @@ reactoApp.service('AuthService', function($http) {
             }
 
         });
+    }
 
-        this.getUserInfo = function() {
+    this.getUserInfo = function() {
 
-            FB.api('/me', function(response) {
+        FB.api('/me', function(response) {
 
-                console.log(response);
-                userId = response.id;
-                userName = response.name;
-                image =  'https://graph.facebook.com/' + userId + '/picture?type=normal';
+            console.log(response);
+            userId = response.id;
+            userName = response.name;
+            image =  'https://graph.facebook.com/' + userId + '/picture?type=normal';
 
-                this.authenticate(userId, name, image, '1231321');
+            this.authenticate(userId, name, image, '1231321');
 
-            });
-
-        }
+        });
 
     }
-})
+});
 
 reactoApp.service('ReactoServices', function($http) {
     this.getInbox = function(id) {

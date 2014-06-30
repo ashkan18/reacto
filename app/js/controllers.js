@@ -1,3 +1,8 @@
+reactoApp.controller('AuthController', function($scope, $rootScope, AuthServices) {
+
+});
+
+
 /**
  * Inbox controller handles showing message in the inbox for logged in user and also has a method
  * for showing the message details which basically calls Platform.showMessage which calls to the native wrapper
