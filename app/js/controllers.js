@@ -1,14 +1,17 @@
 reactoApp.controller('AuthController', [
+    '$rootScope',
     '$scope',
+    '$location',
     '$timeout',
     'Facebook',
-    function($scope, $timeout, Facebook) {
+    'AuthService',
+    function($rootScope, $scope, $location, $timeout, Facebook, AuthService) {
 
         // Define user empty data :/
-        $scope.user = {};
+        $rootScope.user = {};
 
         // Defining user logged status
-        $scope.logged = false;
+        $rootScope.logged = false;
 
         // And some fancy flags to display messages upon user status change
         $scope.byebye = false;
@@ -48,7 +51,7 @@ reactoApp.controller('AuthController', [
         $scope.login = function() {
             Facebook.login(function(response) {
                 if (response.status == 'connected') {
-                    $scope.logged = true;
+                    $rootScope.logged = true;
                     $scope.me();
                 }
 
@@ -64,7 +67,16 @@ reactoApp.controller('AuthController', [
                  * Using $scope.$apply since this happens outside angular framework.
                  */
                 $scope.$apply(function() {
-                    $scope.user = response;
+                    $rootScope.user = response;
+                    console.log(response);
+                    userId = response.id;
+                    userName = response.name;
+                    image =  'https://graph.facebook.com/' + userId + '/picture?type=normal';
+
+                    AuthService.authenticate(userId, name, image, '1231321').success( function(data){
+                            $location.path( '#inbox');
+                    });
+
                 });
 
             });
