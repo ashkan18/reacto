@@ -1,7 +1,7 @@
 <input type="text" ng-model="searchQuery" ng-keypress="search()"/>
 <ul>
     <li ng-repeat="user in searchResults ">
-        <img class="media-object pull-left profile-pic" data="{{message.sender_image}}">
+        <img class="media-object pull-left profile-pic" src="{{user.image}}">
         <div class="media-body">
             <div class="user">{{user.name}}</div>
         </div>
