@@ -1,6 +1,5 @@
 venv
 *.pyc
-
 # Byte-compiled / optimized / DLL files
 __pycache__/
 *.py[cod]
@@ -14,9 +13,9 @@ env/
 bin/
 build/
 develop-eggs/
-dist/
+# dist/
 eggs/
-lib/
+# lib/
 lib64/
 parts/
 sdist/
