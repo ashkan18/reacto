@@ -71,7 +71,7 @@ reactoApp.controller('AuthController', [
                     image =  'https://graph.facebook.com/' + userId + '/picture?type=normal';
 
                     AuthService.authenticate(userId, fullname, image, '1231321').success( function(data){
-                            $location.path( '/#inbox');
+                            $location.path( '/inbox');
                     });
 
                 });
