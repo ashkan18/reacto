@@ -1,3 +1,9 @@
-<div ng-repeat="friend in friends">
-   {{friend.name}}
-</div>
+<ul class='table-view'>
+    <li ng-repeat="friend in friends" class='table-view-cell'>
+        <img class="media-object pull-left profile-pic" src="{{friend.image}}">
+        <div class="media-body">
+            <div class="user">{{friend.name}}</div>
+        </div>
+        <span class="badge" ng-click="addFriend(friend.id)">Add!</span>
+    </li>
+</ul>

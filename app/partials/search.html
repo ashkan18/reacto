@@ -1,6 +1,6 @@
 <input type="text" ng-model="searchQuery" ng-keypress="search()"/>
-<ul>
-    <li ng-repeat="user in searchResults ">
+<ul class='table-view'>
+    <li ng-repeat="user in searchResults" class='table-view-cell'>
         <img class="media-object pull-left profile-pic" src="{{user.image}}">
         <div class="media-body">
             <div class="user">{{user.name}}</div>
