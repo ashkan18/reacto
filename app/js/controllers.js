@@ -66,13 +66,12 @@ reactoApp.controller('AuthController', [
                 $scope.$apply(function() {
                     $rootScope.user = response;
                     $rootScope.userId = response.id;
-                    console.log(response);
                     userId = response.id;
                     fullname = response.name;
                     image =  'https://graph.facebook.com/' + userId + '/picture?type=normal';
 
                     AuthService.authenticate(userId, fullname, image, '1231321').success( function(data){
-                            $location.path( '#inbox');
+                            $location.path( '/#inbox');
                     });
 
                 });
