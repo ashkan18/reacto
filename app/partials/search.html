@@ -3,7 +3,7 @@
     <li ng-repeat="user in searchResults ">
         <img class="media-object pull-left profile-pic" src="{{user.image}}">
         <div class="media-body">
-            <div class="user">{{user.name}}</div>
+            <div class="user">{{user.name}} - {{user.id}}</div>
         </div>
         <span class="badge" ng-click="addFriend(user.id)">Add!</span>
     </li>
