@@ -158,7 +158,7 @@ reactoApp.controller('SearchController', function($scope, $rootScope, ReactoServ
     };
 
     $scope.addFriend = function(friendUserId) {
-        console.log(JSON.stringify($rootScope));
+        console.log($rootScope.id);
         ReactoServices.addFriend($rootScope.id, friendUserId);
     }
 
