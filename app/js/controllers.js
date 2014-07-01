@@ -7,9 +7,6 @@ reactoApp.controller('AuthController', [
     'AuthService',
     function($rootScope, $scope, $location, $timeout, Facebook, AuthService) {
 
-        // Define user empty data :/
-        $rootScope.user = {};
-
         // Defining user logged status
         $rootScope.logged = false;
 
@@ -68,6 +65,7 @@ reactoApp.controller('AuthController', [
                  */
                 $scope.$apply(function() {
                     $rootScope.user = response;
+                    $rootScope.id = response.id;
                     console.log(response);
                     userId = response.id;
                     fullname = response.name;
@@ -160,8 +158,8 @@ reactoApp.controller('SearchController', function($scope, $rootScope, ReactoServ
     };
 
     $scope.addFriend = function(friendUserId) {
-        console.log(JSON.stringify($rootScope.user));
-        ReactoServices.addFriend($rootScope.user.id, friendUserId);
+        console.log(JSON.stringify($rootScope));
+        ReactoServices.addFriend($rootScope.id, friendUserId);
     }
 
 });
