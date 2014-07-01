@@ -160,7 +160,7 @@ reactoApp.controller('SearchController', function($scope, $rootScope, ReactoServ
     };
 
     $scope.addFriend = function(friendUserId) {
-        ReactoServices.addFriend($rootScope.userId, friendUserId);
+        ReactoServices.addFriend($rootScope.user.id, friendUserId);
     }
 
 });
