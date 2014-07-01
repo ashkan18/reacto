@@ -65,7 +65,7 @@ reactoApp.controller('AuthController', [
                  */
                 $scope.$apply(function() {
                     $rootScope.user = response;
-                    $rootScope.id = response.id;
+                    $rootScope.userId = response.id;
                     console.log(response);
                     userId = response.id;
                     fullname = response.name;
@@ -158,8 +158,7 @@ reactoApp.controller('SearchController', function($scope, $rootScope, ReactoServ
     };
 
     $scope.addFriend = function(friendUserId) {
-        console.log($rootScope.id);
-        ReactoServices.addFriend($rootScope.id, friendUserId);
+        ReactoServices.addFriend($rootScope.userId, friendUserId);
     }
 
 });
