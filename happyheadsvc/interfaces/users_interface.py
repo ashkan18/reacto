@@ -22,16 +22,16 @@ def authenticate():
     return jsonify(sucess=True)
 
 
-@app.route('/users/search/', methods=['GET'])
-def search_users():
+@app.route('/users/<string:user_id>/search/', methods=['GET'])
+def search_users(user_id):
     """
     This method searches for users by name based on the query input
 
     curl sample:
-        curl -X GET http://localhost:5000/users/search?query=ashkan
+        curl -X GET http://localhost:5000/users/1/search?query=ashkan
     """
     query = request.args['query']
-    search_results_user_models = user_service.search_users(query)
+    search_results_user_models = user_service.search_users(user_id, query)
     search_results = [user.to_json() for user in search_results_user_models]
     return jsonify(results=search_results)
 

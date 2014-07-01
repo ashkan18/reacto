@@ -26,8 +26,8 @@ def authenticate_user(user_id, access_token, name, image=None):
         return True
 
 
-def search_users(name):
-    return __user_data.search_by_name(name)
+def search_users(user_id, name):
+    return __user_data.search_by_name(user_id, name)
 
 
 def get_friends(user_id):

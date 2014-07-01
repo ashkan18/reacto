@@ -13,24 +13,24 @@ reactoApp.service('AuthService', function($http) {
 });
 
 reactoApp.service('ReactoServices', function($http) {
-    this.getInbox = function(id) {
+    this.getInbox = function(userId) {
         return $http({
             method: 'GET',
-            url: '/messages/user/' + id + '/'
+            url: '/messages/user/' + userId + '/'
         });
     };
 
-    this.getFriends = function(id) {
+    this.getFriends = function(userId) {
         return $http({
-            url: "/users/" + id +"/friends/",
+            url: "/users/" + userId +"/friends/",
             method: 'GET'
         })
     };
 
-    this.searchUsers = function(query) {
+    this.searchUsers = function(userId, query) {
         return $http({
             method: 'GET',
-            url: "/users/search/",
+            url: "/users/"+ userId + "/search/",
             params: {'query': query}
         })
     }

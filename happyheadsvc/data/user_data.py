@@ -48,7 +48,7 @@ class UserData(BaseData):
         """
         self.db.users.update({'id': user_model.id}, user_model.to_json(), upsert=False)
 
-    def search_by_name(self, name):
+    def search_by_name(self, user_id, name):
         """
         Search users by name and returns a list of users
         :param name: name of the user we are looking for
@@ -57,5 +57,8 @@ class UserData(BaseData):
         user_list = []
         search_results = self.db.users.find({'name': {'$regex': name, '$options': 'i'}})
         for row in search_results:
-            user_list.append(UserModel(row))
+            user_model = UserModel(row)
+            # only add user in result if it's not the same as requester of the search
+            if user_model.id != user_id:
+                user_list.append()
         return user_list
