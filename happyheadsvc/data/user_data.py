@@ -60,5 +60,5 @@ class UserData(BaseData):
             user_model = UserModel(row)
             # only add user in result if it's not the same as requester of the search
             if user_model.id != user_id:
-                user_list.append()
+                user_list.append(user_model)
         return user_list
