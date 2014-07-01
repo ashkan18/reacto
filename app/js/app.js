@@ -1,6 +1,16 @@
 var reactoApp = angular.module('ReactoApp', ['ngRoute', 'facebook'])
-    .run(['$rootScope', '$window', function($rootScope) {
+    .run(['$rootScope', '$location', function($rootScope, $location) {
         $rootScope.user = {};
+        $rootScope.userId = null;
+
+        $rootScope.checkAuth = function() {
+            if ($rootScope.userId === null) {
+                // user is not authenticated, go to login
+                $location.path('/authenticate');
+                return false;
+            }
+            return true;
+        };
     }]);
 
 reactoApp.config(['FacebookProvider', function(FacebookProvider) {

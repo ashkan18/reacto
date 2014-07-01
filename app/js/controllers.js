@@ -71,7 +71,7 @@ reactoApp.controller('AuthController', [
                     image =  'https://graph.facebook.com/' + userId + '/picture?type=normal';
 
                     AuthService.authenticate(userId, fullname, image, '1231321').success( function(data){
-                            $location.path( '/inbox');
+                        $location.path( '/inbox');
                     });
 
                 });
@@ -125,11 +125,12 @@ reactoApp.controller('AuthController', [
  * for showing the message details which basically calls Platform.showMessage which calls to the native wrapper
  */
 reactoApp.controller('InboxController', function($scope, $rootScope,  ReactoServices) {
-    ReactoServices.getInbox($rootScope.userId).success(function(data) {
-        $rootScope.page_title = 'Inbox (' + data.inbox.length + ')';
-        $scope.messages = data.inbox;
-    });
-
+    if ($rootScope.checkAuth()) {
+        ReactoServices.getInbox($rootScope.userId).success(function(data) {
+            $rootScope.page_title = 'Inbox (' + data.inbox.length + ')';
+            $scope.messages = data.inbox;
+        });
+    }
     $scope.showMessage = function(messageId) {
         // in this method we will make jsbridge call to open the message and take picture in native app
         Platform.showMessageAndTakePhoto(messageId);
@@ -140,10 +141,12 @@ reactoApp.controller('InboxController', function($scope, $rootScope,  ReactoServ
  * Friendscrontoller which handles showing the friend list page
  */
 reactoApp.controller('FriendsController', function($scope, $rootScope, ReactoServices) {
-    ReactoServices.getFriends($rootScope.userId).success(function(data) {
-        $rootScope.page_title = 'Friends (' + data.friends.length + ')';
-        $scope.friends = data.friends;
-    });
+    if ($rootScope.checkAuth()) {
+        ReactoServices.getFriends($rootScope.userId).success(function(data) {
+            $rootScope.page_title = 'Friends (' + data.friends.length + ')';
+            $scope.friends = data.friends;
+        });
+    }
 });
 
 /**
@@ -151,13 +154,17 @@ reactoApp.controller('FriendsController', function($scope, $rootScope, ReactoSer
  */
 reactoApp.controller('SearchController', function($scope, $rootScope, ReactoServices) {
     $scope.search = function() {
-        ReactoServices.searchUsers($rootScope.userId, $scope.searchQuery).success( function(data) {
-           $scope.searchResults = data.results;
-        });
+        if ($rootScope.checkAuth()) {
+            ReactoServices.searchUsers($rootScope.userId, $scope.searchQuery).success( function(data) {
+               $scope.searchResults = data.results;
+            });
+        }
     };
 
     $scope.addFriend = function(friendUserId) {
-        ReactoServices.addFriend($rootScope.userId, friendUserId);
+        if ($rootScope.checkAuth()) {
+            ReactoServices.addFriend($rootScope.userId, friendUserId);
+        }
     }
 
 });
