@@ -32,7 +32,8 @@ def search_users(user_id):
     """
     query = request.args['query']
     search_results_user_models = user_service.search_users(user_id, query)
-    search_results = [user.to_json() for user in search_results_user_models]
+    search_results = [{'user': search_result['user'].to_json(), 'is_friend': search_result['is_friend']} for search_result
+                      in search_results_user_models]
     return jsonify(results=search_results)
 
 

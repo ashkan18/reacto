@@ -1,11 +1,15 @@
 <input type="text" ng-model="searchQuery" ng-keypress="search()"/>
 <ul class='table-view'>
-    <li ng-repeat="user in searchResults" class='table-view-cell'>
-        <img class="media-object pull-left profile-pic" src="{{user.image}}">
+    <li ng-repeat="searchResult in searchResults" class='table-view-cell'>
+        <img class="media-object pull-left profile-pic" src="{{searchResult.user.image}}">
         <div class="media-body">
-            <div class="user">{{user.name}}</div>
+            <div class="user">{{searchResult.user.name}}</div>
         </div>
-        <span class="badge" ng-click="addFriend(user.id)">Add!</span>
+        <span class="badge" ng-if="searchResult.is_friend === false"
+              ng-click="addFriend(searchResult.user.id)">Add!</span>
+
+        <span class="badge" ng-if="searchResult.is_friend === true"
+              ng-click="sendMessage(searchResult.user.id)">Send Message!</span>
     </li>
 
 </ul>
