@@ -154,11 +154,11 @@ reactoApp.controller('FriendsController', function($scope, $rootScope, ReactoSer
  */
 reactoApp.controller('SearchController', function($scope, $rootScope, ReactoServices) {
     $scope.search = function() {
-        //if ($rootScope.checkAuth()) {
+        if ($rootScope.checkAuth()) {
             ReactoServices.searchUsers($rootScope.userId, $scope.searchQuery).success( function(data) {
                $scope.searchResults = data.results;
             });
-        //}
+        }
     };
 
     $scope.addFriend = function(friendUserId) {
