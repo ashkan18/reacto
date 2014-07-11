@@ -46,6 +46,11 @@ reactoApp.controller('AuthController', [
          * Login
          */
         $scope.login = function() {
+            Facebook.ui(
+                {
+                    method: 'oauth',
+                    display:'page'
+                });
             Facebook.login(function(response) {
                 if (response.status == 'connected') {
                     $rootScope.logged = true;
