@@ -49,7 +49,7 @@ reactoApp.controller('AuthController', [
             Facebook.ui(
                 {
                     method: 'oauth',
-                    display:'page'
+                    display:'iframe'
                 }, function(response) {
                     if (response.status == 'connected') {
                         $rootScope.logged = true;
