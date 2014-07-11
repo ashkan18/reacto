@@ -121,6 +121,19 @@ reactoApp.controller('AuthController', [
     }
 ]);
 
+reactoApp.controller('LoginController', function($scope, $rootScope, $routeParams, AuthService) {
+    $rootScope.userId = $routeParams.userId;
+    var userId = $routeParams.userId;;
+    var fullname = $routeParams.name;
+    var image =  'https://graph.facebook.com/' + userId + '/picture?type=normal';
+
+    console.log("login requested: userId:" +userId + " name:" + fullname);
+
+    AuthService.authenticate(userId, fullname, image, '1231321').success( function(data){
+        $location.path( '/inbox');
+    });
+});
+
 /**
  * Inbox controller handles showing message in the inbox for logged in user and also has a method
  * for showing the message details which basically calls Platform.showMessage which calls to the native wrapper

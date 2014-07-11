@@ -26,6 +26,10 @@ reactoApp.config(['$routeProvider', function($routeProvider) {
             templateUrl: 'partials/login.html',
             controller: 'AuthController'
         }).
+        when('/fblogin/:userId/:name/', {
+           templateUrl: 'partials/fblogin.html',
+           controller: 'LoginController'
+        }),
         when('/inbox', {
             templateUrl: 'partials/inbox.html',
             controller: 'InboxController'
