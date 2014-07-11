@@ -29,7 +29,7 @@ reactoApp.config(['$routeProvider', function($routeProvider) {
         when('/fblogin/:userId/:name/', {
            templateUrl: 'partials/fblogin.html',
            controller: 'LoginController'
-        }),
+        }).
         when('/inbox', {
             templateUrl: 'partials/inbox.html',
             controller: 'InboxController'

@@ -121,7 +121,7 @@ reactoApp.controller('AuthController', [
     }
 ]);
 
-reactoApp.controller('LoginController', function($scope, $rootScope, $routeParams, AuthService) {
+reactoApp.controller('LoginController', function($scope, $rootScope, $routeParams, $location, AuthService) {
     $rootScope.userId = $routeParams.userId;
     var userId = $routeParams.userId;;
     var fullname = $routeParams.name;
