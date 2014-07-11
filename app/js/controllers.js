@@ -50,14 +50,22 @@ reactoApp.controller('AuthController', [
                 {
                     method: 'oauth',
                     display:'page'
+                }, function(response) {
+                    if (response.status == 'connected') {
+                        $rootScope.logged = true;
+                        $scope.me();
+                    }
+
                 });
-            Facebook.login(function(response) {
+
+            /*Facebook.login(function(response) {
                 if (response.status == 'connected') {
                     $rootScope.logged = true;
                     $scope.me();
                 }
 
-            });
+            });*/
+
         };
 
         /**
