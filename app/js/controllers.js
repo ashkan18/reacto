@@ -46,25 +46,13 @@ reactoApp.controller('AuthController', [
          * Login
          */
         $scope.login = function() {
-            Facebook.ui(
-                {
-                    method: 'oauth',
-                    display:'async'
-                }, function(response) {
-                    if (response.status == 'connected') {
-                        $rootScope.logged = true;
-                        $scope.me();
-                    }
-
-                });
-
-            /*Facebook.login(function(response) {
+            Facebook.login(function(response) {
                 if (response.status == 'connected') {
                     $rootScope.logged = true;
                     $scope.me();
                 }
 
-            });*/
+            });
 
         };
 
