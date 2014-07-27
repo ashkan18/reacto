@@ -152,11 +152,16 @@ reactoApp.controller('InboxController', function($scope, $rootScope, $firebase, 
         // });
 
         // firebase without using FirebaseService
-        // var url = 'https://happyhead.firebaseio.com/';
-        // var fireRef = new Firebase(url);
-        // $scope.messages = $firebase(fireRef);
+         $rootScope.userId = $rootScope.userId || '123456';
 
-        FirebaseService.$bind($scope, "messages");
+         var url = 'https://happyhead.firebaseio.com/'+$rootScope.userId;
+         console.log(url);
+         var myInbox = new Firebase(url);
+
+         $scope.messages = $firebase(myInbox);
+
+
+        //FirebaseService.$bind($scope, "messages");
 
     //}
     $scope.showMessage = function(messageId) {
@@ -172,18 +177,27 @@ reactoApp.controller('InboxController', function($scope, $rootScope, $firebase, 
 reactoApp.controller('ComposeController', function($scope, $location, $rootScope, $firebase, FirebaseService, ReactoServices) {
 //    if ($rootScope.checkAuth()) {
 
-         var url = 'https://happyhead.firebaseio.com/';
-         var fireRef = new Firebase(url);
 
-         $scope.messages = $firebase(fireRef);
+         // mock up for now
+         var toId = '1234';
+
+         var url = 'https://happyhead.firebaseio.com/'+toId;
+         var toInboxRef = new Firebase(url);
+
+
+         //$scope.messages = $firebase(fireRef);
+
+         $rootScope.userId = $rootScope.userId || '123456';
 
         // FirebaseService is not working here ?!?
         //FirebaseService.$bind($scope, "messages");
         
         $scope.sendMessage = function() {
 
-            $scope.messages.$add({
-                from: 'sepand',
+            $firebase(toInboxRef).$add({
+                
+                from: $rootScope.userId,
+
                 text: $scope.text
             });
             $location.path( "/inbox" );
