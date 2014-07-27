@@ -16,6 +16,8 @@
     <script src="bower_components/angular-route/angular-route.min.js"></script>
     <script src="bower_components/angular-animate/angular-animate.min.js"></script>
     <script src="bower_components/angular-facebook/lib/angular-facebook.js"></script>
+    <script src="bower_components/firebase/firebase.js"></script>
+    <script src="bower_components/angularfire/angularfire.js"></script>
 
 
 </head>
@@ -23,8 +25,9 @@
     <div id="fb-root"></div>
     <header class="bar bar-nav" id="header">
         <h1 class="title">{{page_title}}</h1>
-        <a class="icon icon-left-nav">Back</a>
-        <a class="icon icon-compose pull-right"></a>
+<!--         <a class="icon icon-left-nav">Back</a>
+ -->
+        <a class="icon icon-compose pull-right" href="#/compose"></a>
     </header>
 
     <div class="content" ng-view></div>

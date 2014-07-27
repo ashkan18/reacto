@@ -10,6 +10,9 @@ reactoApp.controller('AuthController', [
         // Defining user logged status
         $rootScope.logged = false;
 
+        var url = 'https://todomvc-angular.firebaseio.com/';
+        var fireRef = new Firebase(url);
+
         // And some fancy flags to display messages upon user status change
         $scope.byebye = false;
         $scope.salutation = false;
@@ -118,6 +121,7 @@ reactoApp.controller('AuthController', [
         });
 
 
+
     }
 ]);
 
@@ -138,17 +142,56 @@ reactoApp.controller('LoginController', function($scope, $rootScope, $routeParam
  * Inbox controller handles showing message in the inbox for logged in user and also has a method
  * for showing the message details which basically calls Platform.showMessage which calls to the native wrapper
  */
-reactoApp.controller('InboxController', function($scope, $rootScope,  ReactoServices) {
-    if ($rootScope.checkAuth()) {
-        ReactoServices.getInbox($rootScope.userId).success(function(data) {
-            $rootScope.page_title = 'Inbox (' + data.inbox.length + ')';
-            $scope.messages = data.inbox;
-        });
-    }
+reactoApp.controller('InboxController', function($scope, $rootScope, $firebase, FirebaseService, ReactoServices) {
+    //if ($rootScope.checkAuth()) {
+
+        // old mongo code
+        // ReactoServices.getInbox($rootScope.userId).success(function(data) {
+        //     $rootScope.page_title = 'Inbox (' + data.inbox.length + ')';
+        //     $scope.messages = data.inbox;
+        // });
+
+        // firebase without using FirebaseService
+        // var url = 'https://happyhead.firebaseio.com/';
+        // var fireRef = new Firebase(url);
+        // $scope.messages = $firebase(fireRef);
+
+        FirebaseService.$bind($scope, "messages");
+
+    //}
     $scope.showMessage = function(messageId) {
         // in this method we will make jsbridge call to open the message and take picture in native app
         Platform.showMessageAndTakePhoto(messageId);
     }
+});
+
+
+/**
+ * Compose message controller
+ */
+reactoApp.controller('ComposeController', function($scope, $location, $rootScope, $firebase, FirebaseService, ReactoServices) {
+//    if ($rootScope.checkAuth()) {
+
+         var url = 'https://happyhead.firebaseio.com/';
+         var fireRef = new Firebase(url);
+
+         $scope.messages = $firebase(fireRef);
+
+        // FirebaseService is not working here ?!?
+        //FirebaseService.$bind($scope, "messages");
+        
+        $scope.sendMessage = function() {
+
+            $scope.messages.$add({
+                from: 'sepand',
+                text: $scope.text
+            });
+            $location.path( "/inbox" );
+
+        }
+
+
+//    }
 });
 
 /**
