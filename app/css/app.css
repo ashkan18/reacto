@@ -40,6 +40,10 @@
     transition: opacity 0.5 linear;
 }
 
+.container {
+    padding: 2%;
+}
+
 .content > .table-view:first-child {
     margin-top: 0px;
     border-top: 0px;
