@@ -1,2 +1,23 @@
-<textarea ng-model="text"></textarea>
-<button type="submit" ng-click="sendMessage()">Send Message</button>
+<form>
+
+	<input type="search" class="friend-search-field" ng-focus="showSearchResults()" ng-model="searchQuery" placeholder="To"/>
+	<ul class="search-friends">
+	    <li ng-repeat="friend in friends | filter:searchQuery " class='table-view-cell'>
+	        <img class="media-object pull-left profile-pic" src="{{friend.user.image}}">
+	        <div class="media-body">
+	            <div class="user">{{friend.user.name}}</div>
+	        </div>
+	        <span class="badge" ng-if="friend.is_friend === false"
+	              ng-click="addFriend(friend.user.id)">Add!</span>
+
+	        <span class="badge" ng-if="friend.is_friend === true"
+	              ng-click="sendMessage(friend.user.id)">Send Message!</span>
+	    </li>
+
+	</ul>
+	
+	<div class="float-btn">
+		<textarea rows="6" ng-model="text" placeholder="Message"></textarea>
+	    <button class="btn btn-positive btn-block" ng-click="sendMessage()">Send Message</button>
+	</div>
+</form>

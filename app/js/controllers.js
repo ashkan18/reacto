@@ -191,6 +191,24 @@ reactoApp.controller('ComposeController', function($scope, $location, $rootScope
 
         // FirebaseService is not working here ?!?
         //FirebaseService.$bind($scope, "messages");
+
+        console.log(ReactoServices);
+
+        // ReactoServices.getFriends($rootScope.userId).success(function(data) {
+        //     $scope.friends = data.friends;
+        // });
+
+        $scope.friends = [{'user': {name:'John', phone:'555-1276'}},
+                          {'user': {name:'Mary', phone:'800-BIG-MARY'}},
+                          {'user': {name:'Mike', phone:'555-4321'}},
+                          {'user': {name:'Adam', phone:'555-5678'}},
+                          {'user': {name:'Julie', phone:'555-8765'}},
+                          {'user': {name:'Juliette', phone:'555-5678'}}];
+
+        $scope.showSearchResults = function(elem) {
+            console.log(elem);
+        }
+
         
         $scope.sendMessage = function() {
 
@@ -212,12 +230,13 @@ reactoApp.controller('ComposeController', function($scope, $location, $rootScope
  * Friendscrontoller which handles showing the friend list page
  */
 reactoApp.controller('FriendsController', function($scope, $rootScope, ReactoServices) {
-    if ($rootScope.checkAuth()) {
+   // if ($rootScope.checkAuth()) {
+    console.log(ReactoServices);
         ReactoServices.getFriends($rootScope.userId).success(function(data) {
             $rootScope.page_title = 'Friends (' + data.friends.length + ')';
             $scope.friends = data.friends;
         });
-    }
+   // }
 });
 
 /**
