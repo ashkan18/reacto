@@ -54,3 +54,7 @@ coverage.xml
 # Sphinx documentation
 docs/_build/
 
+# bower 
+app/bower_components
+
+nohup.out
